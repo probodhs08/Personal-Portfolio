@@ -2,40 +2,40 @@ pipeline {
     agent any
 
     environment {
-        IMAGE_NAME = 'personal-portfolio'
+        IMAGE_NAME = 'my-portfolio'
         CONTAINER_NAME = 'portfolio-container'
-        HOST_PORT = '9090'
-        CONTAINER_PORT = '80'
+        DOCKER_REGISTRY = '' // Optional: Docker Hub username if you push
     }
 
     stages {
+        stage('Clone Repository') {
+            steps {
+                git credentialsId: 'git-creds', url: 'https://github.com/your-username/your-repo.git'
+            }
+        }
+
         stage('Build Docker Image') {
             steps {
-                echo "🐳 Building Docker image: $IMAGE_NAME"
-                sh 'docker build -t $IMAGE_NAME .'
+                script {
+                    sh "docker build -t $IMAGE_NAME ."
+                }
             }
         }
 
         stage('Stop Old Container') {
             steps {
-                echo "🛑 Stopping and removing old container if exists"
-                sh '''
-                    docker stop $CONTAINER_NAME || true
-                    docker rm $CONTAINER_NAME || true
-                '''
+                script {
+                    sh "docker stop $CONTAINER_NAME || true"
+                    sh "docker rm $CONTAINER_NAME || true"
+                }
             }
         }
 
         stage('Run New Container') {
             steps {
-                echo "🚀 Running new container: $CONTAINER_NAME on port $HOST_PORT"
-                sh 'docker run -d --name $CONTAINER_NAME -p $HOST_PORT:$CONTAINER_PORT $IMAGE_NAME'
-            }
-        }
-
-        stage('Done') {
-            steps {
-                echo "🎉 Deployment complete. Your portfolio is live on http://localhost:$HOST_PORT"
+                script {
+                    sh "docker run -d --name $CONTAINER_NAME -p 9090:80 $IMAGE_NAME"
+                }
             }
         }
     }
