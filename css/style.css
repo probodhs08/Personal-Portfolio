@@ -614,6 +614,101 @@ section {
     transform: translateX(5px);
 }
 
+/* Certifications Section */
+.certifications {
+    padding: 5rem 5%;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.certifications h2 {
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    text-align: center;
+}
+
+.certifications h2 span {
+    color: var(--secondary);
+}
+
+.certifications-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.certification-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 1rem;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s;
+}
+
+.certification-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--secondary);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.certification-header {
+    background: rgba(3, 218, 198, 0.1);
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    border-bottom: 1px solid rgba(3, 218, 198, 0.2);
+}
+
+.certification-header i {
+    font-size: 1.8rem;
+    color: var(--secondary);
+}
+
+.certification-header h3 {
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+.certification-body {
+    padding: 1.5rem;
+}
+
+.certification-body p {
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.certification-body span {
+    display: block;
+    color: var(--secondary);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+/* .certification-badge {
+    background: rgba(187, 134, 252, 0.1);
+    color: var(--accent);
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
+    font-size: 0.8rem;
+    display: inline-block;
+    border: 1px solid var(--accent);
+} */
+
+.btn-small {
+    padding: 0.5rem 1.2rem;
+    font-size: 0.8rem;
+    margin-top: 1rem;
+    display: inline-block;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .certifications-container {
+        grid-template-columns: 1fr;
+    }
+}
 /* Responsive Design */
 @media (max-width: 768px) {
     .projects-container {
