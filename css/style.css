@@ -327,7 +327,49 @@ section {
     position: relative;
 }
 /* Add these styles to your existing style.css file */
+/* Resume Download Section */
+.resume-download {
+    margin-top: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
 
+.download-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.5rem;
+    background: var(--accent);
+    color: var(--primary);
+    border-radius: 0.5rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s;
+    border: 2px solid var(--accent);
+}
+
+.download-btn:hover {
+    background: transparent;
+    color: var(--accent);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(187, 134, 252, 0.4);
+}
+
+.download-note {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+/* Animation for download icon */
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+.download-btn:hover i {
+    animation: bounce 0.8s infinite;
+}
 /* About Section Styles */
 .about {
     display: flex;
